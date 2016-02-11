@@ -20,6 +20,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rake'
   gem.add_dependency 'multi_json'
   gem.add_dependency 'rubyzip', ['~> 1.1']
+  gem.add_dependency 'smarter_csv'
 
   gem.add_development_dependency 'rspec', ['>= 2.0.0']
   gem.add_development_dependency 'simplecov'

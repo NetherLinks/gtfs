@@ -79,7 +79,7 @@ module GTFS
 
       def each(filename)
         SmarterCSV.process(filename) do |row|
-          yield parse_model(row)
+          yield parse_model(row.deep_stringify_keys)
         end
       end
 
@@ -98,7 +98,7 @@ module GTFS
 
         models = []
         SmarterCSV.process(filename) do |row|
-          model = parse_model(row, options)
+          model = parse_model(row.deep_stringify_keys, options)
           models << model if options[:strict] == false || model.valid?
         end
         models
