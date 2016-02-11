@@ -10,8 +10,8 @@ module GTFS
     required_file true
     uses_filename 'stop_times.txt'
 
-    def self.parse_stop_times(data, options={})
-      return parse_models(data, options)
+    def self.parse_stop_times(filename, options={})
+      return parse_models(filename, options)
     end
   end
 end

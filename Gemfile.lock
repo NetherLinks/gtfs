@@ -18,6 +18,7 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.5.3)
     simplecov-html (0.5.3)
+    smarter_csv (1.1.0)
     vcr (1.11.3)
 
 PLATFORMS
@@ -30,4 +31,8 @@ DEPENDENCIES
   rspec
   rubyzip (~> 1.1)
   simplecov
+  smarter_csv
   vcr
+
+BUNDLED WITH
+   1.10.6

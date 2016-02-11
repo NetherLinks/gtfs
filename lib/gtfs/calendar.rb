@@ -9,8 +9,8 @@ module GTFS
     required_file true
     uses_filename 'calendar.txt'
 
-    def self.parse_calendars(data, options={})
-      return parse_models(data, options)
+    def self.parse_calendars(filename, options={})
+      return parse_models(filename, options)
     end
   end
 end

@@ -10,8 +10,8 @@ module GTFS
     required_file false
     uses_filename 'fare_attributes.txt'
 
-    def self.parse_fare_attributes(data, options={})
-      return parse_models(data, options)
+    def self.parse_fare_attributes(filename, options={})
+      return parse_models(filename, options)
     end
   end
 end

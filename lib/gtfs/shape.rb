@@ -12,8 +12,8 @@ module GTFS
 
     column_prefix :shape_
 
-    def self.parse_shapes(data, options={})
-      return parse_models(data, options)
+    def self.parse_shapes(filename, options={})
+      return parse_models(filename, options)
     end
   end
 end

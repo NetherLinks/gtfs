@@ -12,8 +12,8 @@ module GTFS
     required_file true
     uses_filename 'trips.txt'
 
-    def self.parse_trips(data, options={})
-      return parse_models(data, options)
+    def self.parse_trips(filename, options={})
+      return parse_models(filename, options)
     end
   end
 end

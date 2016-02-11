@@ -65,7 +65,7 @@ module GTFS
     ENTITIES.each do |entity|
       define_method entity.name.to_sym do
         parse_file entity.filename do |f|
-          entity.send("parse_#{entity.name}".to_sym, f.read, options)
+          entity.send("parse_#{entity.name}".to_sym, f, options)
         end
       end
 

@@ -1,4 +1,4 @@
-require 'csv'
+require 'smarter_csv'
 
 module GTFS
   module Model
@@ -78,8 +78,8 @@ module GTFS
       end
 
       def each(filename)
-        CSV.foreach(filename, :headers => true) do |row|
-          yield parse_model(row.to_hash)
+        SmarterCSV.process(filename) do |row|
+          yield parse_model(row)
         end
       end
 
@@ -93,12 +93,12 @@ module GTFS
         model = self.new(unprefixed_attr_hash)
       end
 
-      def parse_models(data, options={})
-        return [] if data.nil? || data.empty?
+      def parse_models(filename, options={})
+        return [] if filename.nil?
 
         models = []
-        CSV.parse(data, :headers => true) do |row|
-          model = parse_model(row.to_hash, options)
+        SmarterCSV.process(filename) do |row|
+          model = parse_model(row, options)
           models << model if options[:strict] == false || model.valid?
         end
         models

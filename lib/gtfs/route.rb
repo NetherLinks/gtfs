@@ -12,8 +12,8 @@ module GTFS
     required_file true
     uses_filename 'routes.txt'
 
-    def self.parse_routes(data, options={})
-      return parse_models(data, options)
+    def self.parse_routes(filename, options={})
+      return parse_models(filename, options)
     end
   end
 end
