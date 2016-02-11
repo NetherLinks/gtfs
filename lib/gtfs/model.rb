@@ -78,8 +78,10 @@ module GTFS
       end
 
       def each(filename)
-        SmarterCSV.process(filename) do |row|
-          yield parse_model(row.deep_stringify_keys)
+        SmarterCSV.process(filename, {chunk_size: 50}) do |chunk|
+          chunk.each do |row|
+            yield parse_model(row.deep_stringify_keys)
+          end
         end
       end
 
@@ -97,9 +99,11 @@ module GTFS
         return [] if filename.nil?
 
         models = []
-        SmarterCSV.process(filename) do |row|
-          model = parse_model(row.deep_stringify_keys, options)
-          models << model if options[:strict] == false || model.valid?
+        SmarterCSV.process(filename, {chunk_size: 50}) do |chunk|
+          chunk.each do |row|
+            model = parse_model(row.deep_stringify_keys, options)
+            models << model if options[:strict] == false || model.valid?
+          end
         end
         models
       end
